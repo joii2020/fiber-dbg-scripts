@@ -1,4 +1,5 @@
-cd "$(dirname "$0")/../../"
+#!/bin/bash
+cd "$(dirname "$0")/../fiber/"
 
 cargo build -r
 if [ $? -ne 0 ]; then
@@ -6,15 +7,23 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-cd fiber-js/
-npm i
+cd crates/fiber-wasm
+npm i && npm run build
 if [ $? -ne 0 ]; then
     echo "失败: npm i"
     exit 1
 fi
 
-npm run build
+cd ../fiber-wasm-db-worker
+npm i && npm run build
 if [ $? -ne 0 ]; then
-    echo "失败: npm build"
+    echo "失败: npm i"
+    exit 1
+fi
+
+cd fiber-js/
+npm i && npm run build
+if [ $? -ne 0 ]; then
+    echo "失败"
     exit 1
 fi
