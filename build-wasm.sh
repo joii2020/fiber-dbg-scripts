@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$(dirname "$0")/../fiber/"
 
-cargo build -r
+cargo build -r --all
 if [ $? -ne 0 ]; then
     echo "失败: build -r"
     exit 1
