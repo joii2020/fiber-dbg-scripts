@@ -10,9 +10,8 @@ RESPONSE=$(curl -s -X POST \
     "jsonrpc": "2.0",
     "method": "list_channels",
     "params": [{
-      "peer_id": "'$NODE3_PEERID'"
     }]
-  }' http://localhost:8227)
+  }' http://localhost:$NODE3_PORT)
 EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ]; then
   echo ---- ExitCode: $EXIT_CODE ----

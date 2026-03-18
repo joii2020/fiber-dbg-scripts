@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$(dirname "$0")/../fiber-wallet/"
 
-rm -rf node_modules/
+rm -rf node_modules/ ./packages/shared/node_modules ./apps/node_modules
 pnpm update @nervosnetwork/fiber-js && pnpm i -f
 if [ $? -ne 0 ]; then
     echo "失败"

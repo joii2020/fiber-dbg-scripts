@@ -21,7 +21,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-cd fiber-js/
+cd ../../fiber-js/
 npm i && npm run build
 if [ $? -ne 0 ]; then
     echo "失败"
